@@ -1,27 +1,30 @@
 import React from "react";
 import Image from "next/image";
-import { loggedOutUser } from "@/lib/actions/user.action";
+import { logoutAccount } from "@/lib/actions/user.action";
 import { useRouter } from "next/navigation";
 
 const Footer = ({ user, type = "desktop" }: FooterProps) => {
   const router = useRouter();
   const handleLogOut = async () => {
-    const Loggedout = await loggedOutUser();
+    const Loggedout = await logoutAccount();
     if (Loggedout) router.push("/sign-in");
   };
+
   return (
     <>
       <footer className="footer">
         <div
           className={type === "mobile" ? "footer_name-mobile" : "footer_name"}
         >
-          <p className="text-xl font-bold text-gray-900">{user?.name[0]}</p>
+          <p className="text-xl font-bold text-gray-900">
+            {user?.firstName[0]}
+          </p>
         </div>
         <div
           className={type === "mobile" ? "footer_email-mobile" : "footer_email"}
         >
           <h1 className="text-14 truncate text-gray-800 font-semibold ">
-            {user?.name}
+            {user?.firstName + user?.lastName}
           </h1>
           <p className="text-14 truncate text-gray-600 font-normal">
             {user?.email}

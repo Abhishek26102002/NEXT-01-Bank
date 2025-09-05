@@ -203,14 +203,14 @@ export const authFormSchema = (type: string) =>
     address1:
       type === "sign-in" ? z.string().optional() : z.string().min(3).max(50),
     state:
-      type === "sign-in" ? z.string().optional() : z.string().min(3).max(15),
+      type === "sign-in" ? z.string().optional() : z.string().min(2).max(2),
     city:
       type === "sign-in" ? z.string().optional() : z.string().min(3).max(15),
     postalCode:
       type === "sign-in" ? z.string().optional() : z.string().min(6).max(6),
     dateOfBirth:
       type === "sign-in" ? z.string().optional() : z.string().min(8).max(20),
-    pan:
+    ssn:
       type === "sign-in" ? z.string().optional() : z.string().min(10).max(10),
     //both
     email: z.string().email(),
